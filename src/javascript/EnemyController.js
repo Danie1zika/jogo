@@ -28,6 +28,15 @@ this.enemyDeathSound = new Audio("src/assets/sounds/enemy-death.wav");
 this.enemyDeathSound.volume = 0.1;
 }
 
+draw(ctx) {
+    this.decrementMoveDownTimer();
+    this.fireBullet();
+    this.collisionDetection();
+    this.updateVelocityAndDirection();
+    this.drawEnemies(ctx);
+    this.resetMoveDownTimer();
+}
+
 collisionDetection(){
 this.enemyRows.forEach((enemyRow) => {
 enemyRow.forEach((enemy, enemyIndex) =>{
