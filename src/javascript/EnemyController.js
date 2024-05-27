@@ -105,5 +105,12 @@ moveDown(newDirection) {
         return false;
     }
 }
+drawEnemies(ctx) {
+    this.enemyRows.forEach((enemy) => {
+        enemy.move(this.xVelocity, this.yVelocity);
+        enemy.draw(ctx);
+});
 }
 
+happy = () => {};
+}
