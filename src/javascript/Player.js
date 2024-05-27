@@ -41,4 +41,21 @@ collideWithWalls() {
         this.x = this.canvas.width - this.width;
     }
 }
+keydown = (event) => {
+    if (event.code == "ArrowRight") {
+        this.rightPressed = true;
+    }
+    if (event.code == "ArrowLeft") {
+        this.leftPressed = true;
+    }
+};
+
+keyUp = (event) => {
+    if (event.code == "ArrowRight") {
+        this.rightPressed = false;
+    }
+    if (event.code == "ArrowLeft") {
+        this.leftPressed = false;
+    }
+};
 }
