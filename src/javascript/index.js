@@ -15,7 +15,8 @@ background.src = 'src/assets/images/space.png';
 
 const enemyBulletController = new BulletController(canvas, 4, "red", false);
 
-const playerBulletController = new Player(canvas, 10, "white", true);
+const playerBulletController = new BulletController(canvas, 10, "white", true);
+
 const enemyController = new EnemyController(
     canvas,
     enemyBulletController,
@@ -31,13 +32,28 @@ function game() {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 }
 
+function displayGameOver() {
+    let text = didWin ? "Você Ganhou!" : "Game Over";
+
+    let textOfffset = didWin ? 5 : 3.6;
+    ctx. fillStyle = "white";
+    ctx. font = "35px 'Press Start 2P'";
+    ctx.fillText(text, canvas.width / textOfffset, canvas.height / 2)
+}
+
 function checkGameOver() {
     if(isGmaeOver) {
         return;
     }
+
     if(enemyBulletController.collideWith(player)) {
         isGameOver = true;
     }
+
+    if(playerBulletController.collideWith(player)) {
+        isGameOver = true;
+    }
+
     if(enemyController.enemyRows.length === 0) {
         didWin = true;
         isGameOver = true;
