@@ -1,7 +1,9 @@
 import Bullet from "./bullet.js";
+
 export default class BulletController {
     bullets = [];
     timeTillNextBulletAllowed = 0;
+
     constructor(canvas, maxBulletsAtATime, BulletColor, soundEnabled) {
         this.canvas = canvas;
         this.maxBulletsAtATime = maxBulletsAtATime;
@@ -23,8 +25,7 @@ export default class BulletController {
     }
 
     collideWith(sprite) {
-        const bulletThatHitSpriteIndex = this.bullets.findIndex((bullet) =>
-        bullet.collideWith(sprite));
+        const bulletThatHitSpriteIndex = this.bullets.findIndex((bullet) => bullet.collideWith(sprite));
 
         if (bulletThatHitSpriteIndex >= 0) {
             this.bullets.splice(bulletThatHitSpriteIndex, 1);
@@ -32,6 +33,7 @@ export default class BulletController {
         }
         return false;
     }
+    
     shoot(x, y, velocity, timeTillNextBulletAllowed = 0) {
         if (this.timeTillNextBulletAllowed <= 0 &&
             this.bullets.length < this.maxBulletsAtATime) {
